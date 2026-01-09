@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class Product extends Model
 {
@@ -26,6 +27,19 @@ class Product extends Model
     protected $casts = [
         'images' => 'array'
     ];
+
+    protected static function booted()
+    {
+        static::deleting(function ($product) {
+            if ($product->images && is_array($product->images)) {
+                foreach ($product->images as $image) {
+                    if ($image) {
+                        Storage::disk('public')->delete($image);
+                    }
+                }
+            }
+        });
+    }
 
     public function category() {
         return $this->belongsTo(Category::class);
