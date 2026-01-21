@@ -41,6 +41,10 @@ class Product extends Model
         });
     }
 
+    public function scopeActive() {
+        return $this->where('is_active', true);
+    }
+
     public function category() {
         return $this->belongsTo(Category::class);
     }
