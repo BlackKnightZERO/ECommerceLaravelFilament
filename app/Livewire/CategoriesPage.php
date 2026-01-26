@@ -6,7 +6,7 @@ use App\Models\Category;
 use Livewire\Attributes\Title;
 use Livewire\Component;
 
-#[Title('Categories')]
+#[Title('Categories Page')]
 class CategoriesPage extends Component
 {
     public function render()

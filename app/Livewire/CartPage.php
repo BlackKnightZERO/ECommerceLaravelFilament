@@ -8,7 +8,7 @@ use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
 use Livewire\Attributes\Title;
 use Livewire\Component;
 
-#[Title('Cart')]
+#[Title('Cart Page')]
 class CartPage extends Component
 {
     public $cart_items;
