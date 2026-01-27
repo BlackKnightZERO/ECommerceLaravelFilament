@@ -52,7 +52,19 @@
             @endguest
 
             @auth
-            <div class="hs-dropdown [--strategy:static] md:[--strategy:fixed] [--adaptive:none] md:[--trigger:hover] md:py-4">
+              <a wire:navigate class="font-medium text-blue-600 hover:text-gray-400 py-3 md:py-6 dark:text-gray-400 dark:hover:text-gray-500 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" href="/">
+              {{ auth()->user()->name }}
+              </a>
+              <a wire:navigate class="font-medium {{ request()->is('/my-orders') ? 'text-blue-600' : 'text-gray-500 ' }} hover:text-gray-400 py-3 md:py-6 dark:text-gray-400 dark:hover:text-gray-500 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" href="/my-orders">
+              My Orders
+              </a>
+              <a class="font-medium {{ request()->is('/logout') ? 'text-blue-600' : 'text-gray-500 ' }} hover:text-gray-400 py-3 md:py-6 dark:text-gray-400 dark:hover:text-gray-500 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" href="/logout">
+              Logout
+              </a>
+            @endauth
+
+            @auth
+            <!-- <div wire:ignore class="hs-dropdown [--strategy:static] md:[--strategy:fixed] [--adaptive:none] md:[--trigger:hover] md:py-4">
               <button type="button" class="flex items-center w-full text-gray-500 hover:text-gray-400 font-medium dark:text-gray-400 dark:hover:text-gray-500">
                 {{ auth()->user()->name }}
               <svg class="ms-2 w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -72,7 +84,7 @@
                   Logout
                 </a>
               </div>
-            </div>
+            </div> -->
           @endauth
 
           </div>
