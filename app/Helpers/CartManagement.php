@@ -62,7 +62,7 @@ class CartManagement {
     }
 
     // clear cart items to cookie
-    static public function clearCartItemsToCookie() {
+    static public function clearCartItems() {
         Cookie::queue(Cookie::forget('cart_items'));
     }
 
