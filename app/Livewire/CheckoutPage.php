@@ -3,10 +3,12 @@
 namespace App\Livewire;
 
 use App\Helpers\CartManagement;
+use App\Mail\OrderPlaced;
 use App\Models\Address;
 use App\Models\Order;
 use App\Models\OrderItem;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Livewire\Attributes\Title;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
@@ -78,7 +80,11 @@ class CheckoutPage extends Component
 
             // CartManagement::removeItemFromCart($item['product_id']);
         }
+
         CartManagement::clearCartItems();
+
+        Mail::to(request()->user())->send(new OrderPlaced($order));
+
         return redirect('/success');
     }
 
